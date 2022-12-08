@@ -1,43 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
-public enum BattleState { StartPhase, DicePhase, Player1Turn, Player2Turn, Player1Win, Player2Win}
+using TMPro;
 
 public class TurnSystem : MonoBehaviour
 {
-    public BattleState state; 
+    public enum TurnState
+    {
+        START,
+        DICE,
+        P1ACTION,
+        P2ACTION,
+        P1WIN,
+        P2WIN
+    }
+
+    public TurnState m_CurrentState;
+
+    public DiceSystem m_DiceSystem;
 
     // Start is called before the first frame update
     void Start()
     {
-        state = BattleState.StartPhase; 
-        SetupMatch();
+        m_CurrentState = TurnState.START;
     }
 
-    void SetupMatch()
+    // Update is called once per frame
+    void Update()
     {
-        DicePhase();
-    }
-
-    void DicePhase()
-    {
-        state = BattleState.DicePhase;
-        int m_P1DiceRoll = RollDice.m_P1DiceNum;
-        int m_P2DiceRoll = RollDice.m_P2DiceNum;
-        do
+        switch (m_CurrentState)
         {
-            if (m_P1DiceRoll > m_P2DiceRoll)
+            case TurnState.START:
+                Debug.Log("Start phase");
+                RoundStart();
+                break;
+            case TurnState.DICE:
+                Debug.Log("Dice phase");
+                CompareNum();
+                break;
+            case TurnState.P1ACTION:
+                Debug.Log("P1 Action phase");
+                break;
+            case TurnState.P2ACTION:
+                Debug.Log("P2 Action phase");
+                break;
+            case TurnState.P1WIN:
+                Debug.Log("P1 Win");
+                break;
+            case TurnState.P2WIN:
+                Debug.Log("P2 Win");
+                break;
+        }
+    }
+
+    void RoundStart()
+    {
+        m_DiceSystem.m_P1CanRoll = true;
+        m_DiceSystem.m_P2CanRoll = true;
+        m_CurrentState = TurnState.DICE;
+    }
+
+    void CompareNum()
+    {
+        if (m_DiceSystem.m_P1CanRoll == false && m_DiceSystem.m_P2CanRoll == false)
+        {
+            if (m_DiceSystem.m_P1DiceNum > m_DiceSystem.m_P2DiceNum)
             {
-                state = BattleState.Player1Turn;
-                Debug.Log("Player 1 Turn");
+                m_CurrentState = TurnState.P1ACTION;
             }
-            else if (m_P1DiceRoll < m_P2DiceRoll)
+            else if (m_DiceSystem.m_P1DiceNum < m_DiceSystem.m_P2DiceNum)
             {
-                state = BattleState.Player2Turn;
-                Debug.Log("Player 2 Turn");
+                m_CurrentState = TurnState.P2ACTION;
             }
-        } while (m_P1DiceRoll == m_P2DiceRoll);
+            else if (m_DiceSystem.m_P1DiceNum == m_DiceSystem.m_P2DiceNum)
+            {
+                m_CurrentState = TurnState.START;
+            }
+            Debug.Log("compared");
+        }
     }
 }
