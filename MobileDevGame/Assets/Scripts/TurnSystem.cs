@@ -33,13 +33,19 @@ public class TurnSystem : MonoBehaviour
 
     //Bool
     bool m_P1Win;
-    bool P2Win;
+    bool m_P2Win;
+
+    //UI
+    public GameObject m_GameOverUI;
 
     // Start is called before the first frame update
     void Start()
     {
         m_CurrentState = TurnState.START;
         m_TimeStore = m_Time;
+
+        //Set UI
+        m_GameOverUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -129,12 +135,14 @@ public class TurnSystem : MonoBehaviour
         {
             m_P1Text.text = "You Win";
             m_P2Text.text = "You Lose";
+            m_GameOverUI.SetActive(true);
             m_CurrentState = TurnState.GAMEOVER;
         }
         else if (m_ActionSystem.m_HasActed && m_ActionSystem.m_P1FortCount <= 0)
         {
             m_P1Text.text = "You Lose";
             m_P2Text.text = "You Win";
+            m_GameOverUI.SetActive(true);
             m_CurrentState = TurnState.GAMEOVER;
         }
         else if (m_ActionSystem.m_HasActed)
