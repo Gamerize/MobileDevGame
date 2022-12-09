@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TurnSystem : MonoBehaviour
 {
@@ -11,9 +12,8 @@ public class TurnSystem : MonoBehaviour
         DICE,
         P1ACTION,
         P2ACTION,
-        P1WIN,
-        P2WIN,
-        Wait
+        GAMEOVER,
+        WAIT
     }
 
     //States
@@ -28,13 +28,18 @@ public class TurnSystem : MonoBehaviour
     public TextMeshProUGUI m_P2Text;
 
     //Time
-    public float time;
-    private float timeStore;
+    public float m_Time = 1f;
+    private float m_TimeStore;
+
+    //Bool
+    bool m_P1Win;
+    bool P2Win;
 
     // Start is called before the first frame update
     void Start()
     {
         m_CurrentState = TurnState.START;
+        m_TimeStore = m_Time;
     }
 
     // Update is called once per frame
@@ -58,15 +63,12 @@ public class TurnSystem : MonoBehaviour
                 Debug.Log("P2 Action phase");
                 CheckWin();
                 break;
-            case TurnState.P1WIN:
-                Debug.Log("P1 Win");
+            case TurnState.GAMEOVER:
+                Debug.Log("Game Over");
                 break;
-            case TurnState.P2WIN:
-                Debug.Log("P2 Win");
-                break;
-            case TurnState.Wait:
+            case TurnState.WAIT:
                 Debug.Log("Wait");
-
+                Waiting(TurnState.START);
                 break;
         }
     }
@@ -75,10 +77,9 @@ public class TurnSystem : MonoBehaviour
     {
         m_DiceSystem.m_P1CanRoll = true;
         m_DiceSystem.m_P2CanRoll = true;
-        m_ActionSystem.m_HasActed = false;
         m_CurrentState = TurnState.DICE;
         m_P1Text.text = "Roll the Dice";
-        m_P1Text.text = "Roll the Dice";
+        m_P2Text.text = "Roll the Dice";
     }
 
     void CompareNum()
@@ -88,35 +89,57 @@ public class TurnSystem : MonoBehaviour
             if (m_DiceSystem.m_P1DiceNum > m_DiceSystem.m_P2DiceNum)
             {
                 m_P1Text.text = "P1 Turn";
-                m_P1Text.text = " ";
+                m_P2Text.text = " ";
+                m_ActionSystem.m_HasActed = false;
                 m_CurrentState = TurnState.P1ACTION;
             }
             else if (m_DiceSystem.m_P1DiceNum < m_DiceSystem.m_P2DiceNum)
             {
                 m_P1Text.text = " ";
                 m_P2Text.text = "P2 Turn";
+                m_ActionSystem.m_HasActed = false;
                 m_CurrentState = TurnState.P2ACTION;
             }
             else if (m_DiceSystem.m_P1DiceNum == m_DiceSystem.m_P2DiceNum)
             {
                 m_P1Text.text = "Reroll";
                 m_P1Text.text = "Reroll";
-                m_CurrentState = TurnState.START;
+                m_CurrentState = TurnState.WAIT;
             }
             Debug.Log("compared");
         }
     }
 
-    void Waiting(float WaitingTime, TurnState NextState)
+    void Waiting(TurnState NextState)
     {
-        
+        if(m_Time > 0)
+        {
+            m_Time -= Time.deltaTime;
+        }
+        else
+        {
+            m_CurrentState = NextState;
+            m_Time = m_TimeStore;
+        }
     }
 
     void CheckWin()
     {
-        if(m_ActionSystem.m_HasActed == true)
+        if(m_ActionSystem.m_HasActed && m_ActionSystem.m_P2FortCount <= 0)
         {
-            m_CurrentState = TurnState.START;
+            m_P1Text.text = "You Win";
+            m_P2Text.text = "You Lose";
+            m_CurrentState = TurnState.GAMEOVER;
+        }
+        else if (m_ActionSystem.m_HasActed && m_ActionSystem.m_P1FortCount <= 0)
+        {
+            m_P1Text.text = "You Lose";
+            m_P2Text.text = "You Win";
+            m_CurrentState = TurnState.GAMEOVER;
+        }
+        else if (m_ActionSystem.m_HasActed)
+        {
+            m_CurrentState = TurnState.WAIT;
         }
     }
 }

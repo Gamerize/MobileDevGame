@@ -17,6 +17,9 @@ public class DiceSystem : MonoBehaviour
     public bool m_P1CanRoll;
     public bool m_P2CanRoll;
 
+    //Scripts
+    public TurnSystem m_TurnSystem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,7 @@ public class DiceSystem : MonoBehaviour
         if (m_P1CanRoll == true)
         {
             P1RollDice(6);
+            m_TurnSystem.m_P1Text.text = "Rolled";
             m_P1CanRoll = false;
         }
     }
@@ -48,6 +52,7 @@ public class DiceSystem : MonoBehaviour
         if (m_P2CanRoll == true)
         {
             P2RollDice(6);
+            m_TurnSystem.m_P2Text.text = "Rolled";
             m_P2CanRoll = false;
         }
     }
