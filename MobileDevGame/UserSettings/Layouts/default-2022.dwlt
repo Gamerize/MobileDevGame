@@ -176,7 +176,7 @@ MonoBehaviour:
     pluginStates:
     - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
     - '{}'
-    scale: 65
+    scale: 97
     fitToScreenEnabled: 0
     rotationDegree: 0
     highlightSafeAreaEnabled: 1
