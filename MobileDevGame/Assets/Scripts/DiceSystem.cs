@@ -5,9 +5,10 @@ using TMPro;
 
 public class DiceSystem : MonoBehaviour
 {
-    //Text
-    public TextMeshProUGUI m_P1DiceNumText;
-    public TextMeshProUGUI m_P2DiceNumText;
+    //Sprite
+    [SerializeField] private Sprite[] m_diceSides;
+    [SerializeField] private SpriteRenderer m_p1Renderer;
+    [SerializeField] private SpriteRenderer m_p2Renderer;
 
     //Num
     public int m_P1DiceNum;
@@ -16,6 +17,8 @@ public class DiceSystem : MonoBehaviour
     //Bool
     public bool m_P1CanRoll;
     public bool m_P2CanRoll;
+    private bool m_p1Ready;
+    private bool m_p2Ready;
 
     //Scripts
     public TurnSystem m_TurnSystem;
@@ -25,25 +28,22 @@ public class DiceSystem : MonoBehaviour
     {
         m_P1CanRoll = false;
         m_P2CanRoll = false;
-    }
+        bool m_p1Ready = true;
+        bool m_p2Ready = true;
+}
 
     public void P1DiceButton()
     {
         Debug.Log("Rolled P1");
         if (m_P1CanRoll == true)
         {
-            P1RollDice(6);
-            m_TurnSystem.m_P1Text.text = "Rolled";
-            m_P1CanRoll = false;
+            m_p1Ready = true;
+            if (m_p1Ready)
+            {
+                StartCoroutine("P1RollDice");
+                m_p1Ready = false;
+            }  
         }
-    }
-
-    void P1RollDice(int maxInt)
-    {
-        int m_RandomInt = Random.Range(1, maxInt + 1);
-        m_P1DiceNum = m_RandomInt;
-        m_P1DiceNumText.text = m_RandomInt.ToString();
-        Debug.Log("random num generated");
     }
 
     public void P2DiceButton()
@@ -51,17 +51,46 @@ public class DiceSystem : MonoBehaviour
         Debug.Log("Rolled P2");
         if (m_P2CanRoll == true)
         {
-            P2RollDice(6);
-            m_TurnSystem.m_P2Text.text = "Rolled";
-            m_P2CanRoll = false;
+            m_p2Ready = true;
+            if (m_p2Ready)
+            {
+                StartCoroutine("P2RollDice");
+                m_p2Ready = false;
+            }
         }
     }
 
-    void P2RollDice(int maxInt)
+    private IEnumerator P1RollDice()
     {
-        int m_RandomInt = Random.Range(1, maxInt + 1);
-        m_P2DiceNum = m_RandomInt;
-        m_P2DiceNumText.text = m_RandomInt.ToString();
-        Debug.Log("random num generated");
+        int m_RandomInt = 0;
+        for (int i = 0; i < 20; i++)
+        {
+            m_RandomInt = Random.Range(0, 6);
+
+            m_p1Renderer.sprite = m_diceSides[m_RandomInt];
+
+            yield return new WaitForSeconds(0.05f);
+        }
+        m_P1DiceNum = m_RandomInt + 1;
+        Debug.Log(m_P1DiceNum);
+        m_TurnSystem.m_P1Text.text = "Rolled";
+        m_P1CanRoll = false;
+    }
+
+    private IEnumerator P2RollDice()
+    {
+        int m_RandomInt = 0;
+        for (int i = 0; i < 20; i++)
+        {
+            m_RandomInt = Random.Range(0, 6);
+
+            m_p2Renderer.sprite = m_diceSides[m_RandomInt];
+
+            yield return new WaitForSeconds(0.05f);
+        }
+        m_P2DiceNum = m_RandomInt + 1;
+        Debug.Log(m_P2DiceNum);
+        m_TurnSystem.m_P2Text.text = "Rolled";
+        m_P2CanRoll = false;
     }
 }
