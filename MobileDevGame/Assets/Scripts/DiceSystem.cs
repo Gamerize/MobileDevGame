@@ -22,6 +22,7 @@ public class DiceSystem : MonoBehaviour
 
     //Scripts
     public TurnSystem m_TurnSystem;
+    public AudioManager m_AudioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class DiceSystem : MonoBehaviour
             m_p1Ready = true;
             if (m_p1Ready)
             {
+                m_AudioManager.playAudio("Roll");
                 StartCoroutine("P1RollDice");
                 m_p1Ready = false;
             }  
@@ -54,6 +56,7 @@ public class DiceSystem : MonoBehaviour
             m_p2Ready = true;
             if (m_p2Ready)
             {
+                m_AudioManager.playAudio("Roll");
                 StartCoroutine("P2RollDice");
                 m_p2Ready = false;
             }

@@ -973,6 +973,7 @@ MonoBehaviour:
   - {fileID: 1585855564}
   - {fileID: 1283151545}
   m_TurnSystem: {fileID: 821852862}
+  m_AudioManager: {fileID: 332794391}
 --- !u!4 &67074286
 Transform:
   m_ObjectHideFlags: 0
@@ -1524,6 +1525,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 332794390}
+  - component: {fileID: 332794391}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -1546,6 +1548,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332794391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332794389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abbb817e6fffbd49bc114d3afb415c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClip:
+  - m_Name: Roll
+    Sound: {fileID: 8300000, guid: 06d510775947a1e4ebc078e691f156b5, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - m_Name: Draw
+    Sound: {fileID: 8300000, guid: 0d392548d366d2747b7d6ee922091681, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - m_Name: Boom
+    Sound: {fileID: 8300000, guid: 2af7ac9b1027ce04e9f092d0960f2616, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &347231922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 990335027248309039, guid: 0afe8fcfc4ac6ce46aef76429ea6a0f0, type: 3}
@@ -5148,6 +5178,7 @@ MonoBehaviour:
   m_P1CanRoll: 0
   m_P2CanRoll: 0
   m_TurnSystem: {fileID: 821852862}
+  m_AudioManager: {fileID: 332794391}
 --- !u!4 &1385019596
 Transform:
   m_ObjectHideFlags: 0
@@ -7989,6 +8020,7 @@ MonoBehaviour:
   m_P1CanRoll: 0
   m_P2CanRoll: 0
   m_TurnSystem: {fileID: 0}
+  m_AudioManager: {fileID: 0}
 --- !u!1 &1956029864
 GameObject:
   m_ObjectHideFlags: 0

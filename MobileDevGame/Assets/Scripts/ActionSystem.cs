@@ -27,6 +27,7 @@ public class ActionSystem : MonoBehaviour
 
     //Scripts
     public TurnSystem m_TurnSystem;
+    public AudioManager m_AudioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,7 @@ public class ActionSystem : MonoBehaviour
     {
         if(m_P1BarrierCount < 3 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Draw");
             m_P1Barriers[m_P1BarrierCount].SetActive(true);
             m_P1BarrierCount++;
             m_HasActed = true;
@@ -87,6 +89,7 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P1TurretCount < 3 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Draw");
             m_P1Turrets[m_P1TurretCount].SetActive(true);
             m_P1TurretCount++;
             m_HasActed = true;
@@ -106,6 +109,7 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P2BarrierCount < 3 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Draw");
             m_P2Barriers[m_P2BarrierCount].SetActive(true);
             m_P2BarrierCount++;
             m_HasActed = true;
@@ -126,6 +130,7 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P2TurretCount < 3 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Draw");
             m_P2Turrets[m_P2TurretCount].SetActive(true);
             m_P2TurretCount++;
             m_HasActed = true;
@@ -146,6 +151,7 @@ public class ActionSystem : MonoBehaviour
     { 
         if(m_P1TurretCount != 0 && m_P2TurretCount != 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Boom");
             m_P2Turrets[m_P2TurretCount-1].SetActive(false);
             m_P2TurretCount--;
             m_TurnSystem.m_P1Text.text = "P2 Turret Destroyed!";
@@ -168,6 +174,7 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P2TurretCount != 0 && m_P1TurretCount != 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Boom");
             m_P1Turrets[m_P1TurretCount-1].SetActive(false);
             m_P1TurretCount--;
             m_TurnSystem.m_P2Text.text = "P1 Turret Destroyed!";
@@ -191,6 +198,7 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P1TurretCount != 0 && m_P2BarrierCount != 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Boom");
             m_P2Barriers[m_P2BarrierCount-1].SetActive(false);
             m_P2BarrierCount--;
             m_TurnSystem.m_P1Text.text = "P2 Barrier Destroyed!";
@@ -213,6 +221,7 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P2TurretCount != 0 && m_P1BarrierCount != 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Boom");
             m_P1Barriers[m_P1BarrierCount-1].SetActive(false);
             m_P1BarrierCount--;
             m_TurnSystem.m_P2Text.text = "P1 Barrier Destroyed!";
@@ -236,6 +245,7 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P1TurretCount != 0 && m_P2FortCount != 0 && m_HasActed == false && m_P2BarrierCount == 0)
         {
+            m_AudioManager.playAudio("Boom");
             m_P2Forts[m_P2FortCount - 1].SetActive(false);
             m_P2FortCount--;
             m_TurnSystem.m_P1Text.text = "P2 Fort Damaged!";
@@ -258,6 +268,7 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P2TurretCount != 0 && m_P1FortCount != 0 && m_HasActed == false && m_P1BarrierCount == 0)
         {
+            m_AudioManager.playAudio("Boom");
             m_P1Forts[m_P1FortCount - 1].SetActive(false);
             m_P1FortCount--;
             m_TurnSystem.m_P2Text.text = "P1 Fort Damaged!";
