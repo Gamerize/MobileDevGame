@@ -29,8 +29,8 @@ public class DiceSystem : MonoBehaviour
     {
         m_P1CanRoll = false;
         m_P2CanRoll = false;
-        bool m_p1Ready = true;
-        bool m_p2Ready = true;
+        m_p1Ready = true;
+        m_p2Ready = true;
 }
 
     public void P1DiceButton()
