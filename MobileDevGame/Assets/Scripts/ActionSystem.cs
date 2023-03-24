@@ -29,6 +29,12 @@ public class ActionSystem : MonoBehaviour
     public TurnSystem m_TurnSystem;
     public AudioManager m_AudioManager;
 
+    //Fade in
+    public float m_FadeInTime = 1f;
+
+    //Explosion
+    [SerializeField] private Sprite m_explosion; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,11 +43,13 @@ public class ActionSystem : MonoBehaviour
         for (int i = 0; i < m_P1Barriers.Length; i++)
         {
             m_P1Barriers[i].SetActive(false);
+            StartCoroutine(Invisible(m_P1Barriers[m_P1BarrierCount].GetComponent<SpriteRenderer>()));
         }
         m_P2BarrierCount = 0;
         for (int i = 0; i < m_P2Barriers.Length; i++)
         {
             m_P2Barriers[i].SetActive(false);
+            StartCoroutine(Invisible(m_P2Barriers[m_P2BarrierCount].GetComponent<SpriteRenderer>()));
         }
 
         //Set Turrets
@@ -49,11 +57,13 @@ public class ActionSystem : MonoBehaviour
         for (int i = 0; i < m_P1Turrets.Length; i++)
         {
             m_P1Turrets[i].SetActive(false);
+            StartCoroutine(Invisible(m_P1Turrets[m_P1TurretCount].GetComponent<SpriteRenderer>()));
         }
         m_P2TurretCount = 0;
         for (int i = 0; i < m_P2Turrets.Length; i++)
         {
             m_P2Turrets[i].SetActive(false);
+            StartCoroutine(Invisible(m_P2Turrets[m_P2TurretCount].GetComponent<SpriteRenderer>()));
         }
 
         //Set Forts
@@ -70,6 +80,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Draw");
             m_P1Barriers[m_P1BarrierCount].SetActive(true);
+            StartCoroutine(DoFadeIn(m_P1Barriers[m_P1BarrierCount].GetComponent<SpriteRenderer>()));
             m_P1BarrierCount++;
             m_HasActed = true;
             m_TurnSystem.m_P1Text.text = "Barrier Built";
@@ -91,6 +102,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Draw");
             m_P1Turrets[m_P1TurretCount].SetActive(true);
+            StartCoroutine(DoFadeIn(m_P1Turrets[m_P1TurretCount].GetComponent<SpriteRenderer>()));
             m_P1TurretCount++;
             m_HasActed = true;
             m_TurnSystem.m_P1Text.text = "Turret Built";
@@ -111,6 +123,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Draw");
             m_P2Barriers[m_P2BarrierCount].SetActive(true);
+            StartCoroutine(DoFadeIn(m_P2Barriers[m_P2BarrierCount].GetComponent<SpriteRenderer>()));
             m_P2BarrierCount++;
             m_HasActed = true;
             m_TurnSystem.m_P2Text.text = "Barrier Built";
@@ -132,6 +145,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Draw");
             m_P2Turrets[m_P2TurretCount].SetActive(true);
+            StartCoroutine(DoFadeIn(m_P2Turrets[m_P2TurretCount].GetComponent<SpriteRenderer>()));
             m_P2TurretCount++;
             m_HasActed = true;
             m_TurnSystem.m_P2Text.text = "Turret Built";
@@ -153,6 +167,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Boom");
             m_P2Turrets[m_P2TurretCount-1].SetActive(false);
+            StartCoroutine(Explosion(m_P2Turrets[m_P2TurretCount-1].GetComponent<SpriteRenderer>()));
             m_P2TurretCount--;
             m_TurnSystem.m_P1Text.text = "P2 Turret Destroyed!";
             m_HasActed = true;
@@ -176,6 +191,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Boom");
             m_P1Turrets[m_P1TurretCount-1].SetActive(false);
+            StartCoroutine(Explosion(m_P1Turrets[m_P1TurretCount-1].GetComponent<SpriteRenderer>()));
             m_P1TurretCount--;
             m_TurnSystem.m_P2Text.text = "P1 Turret Destroyed!";
             m_HasActed = true;
@@ -200,6 +216,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Boom");
             m_P2Barriers[m_P2BarrierCount-1].SetActive(false);
+            StartCoroutine(Explosion(m_P2Barriers[m_P2BarrierCount-1].GetComponent<SpriteRenderer>()));
             m_P2BarrierCount--;
             m_TurnSystem.m_P1Text.text = "P2 Barrier Destroyed!";
             m_HasActed = true;
@@ -223,6 +240,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Boom");
             m_P1Barriers[m_P1BarrierCount-1].SetActive(false);
+            StartCoroutine(Explosion(m_P1Barriers[m_P1BarrierCount-1].GetComponent<SpriteRenderer>()));
             m_P1BarrierCount--;
             m_TurnSystem.m_P2Text.text = "P1 Barrier Destroyed!";
             m_HasActed = true;
@@ -247,6 +265,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Boom");
             m_P2Forts[m_P2FortCount - 1].SetActive(false);
+            StartCoroutine(Explosion(m_P2Forts[m_P2FortCount-1].GetComponent<SpriteRenderer>()));
             m_P2FortCount--;
             m_TurnSystem.m_P1Text.text = "P2 Fort Damaged!";
             m_HasActed = true;
@@ -270,6 +289,7 @@ public class ActionSystem : MonoBehaviour
         {
             m_AudioManager.playAudio("Boom");
             m_P1Forts[m_P1FortCount - 1].SetActive(false);
+            StartCoroutine(Explosion(m_P1Forts[m_P1FortCount-1].GetComponent<SpriteRenderer>()));
             m_P1FortCount--;
             m_TurnSystem.m_P2Text.text = "P1 Fort Damaged!";
             m_HasActed = true;
@@ -286,5 +306,60 @@ public class ActionSystem : MonoBehaviour
         {
             m_TurnSystem.m_P2Text.text = "Not Your Turn";
         }
+    }
+
+    IEnumerator Invisible(SpriteRenderer Sprite)
+    {
+        Color tempColor = Sprite.color;
+
+        while (tempColor.a >= 1f)
+        {
+            Debug.Log("Invisible");
+            tempColor.a = 0f;
+            Sprite.color = tempColor;
+
+            yield return null;
+        }
+
+        Sprite.color = tempColor;
+    }
+
+    IEnumerator DoFadeIn(SpriteRenderer Sprite)
+    {
+        Color tempColor = Sprite.color;
+
+        while (tempColor.a < 1f)
+        {
+            Debug.Log("Fading In");
+            tempColor.a += Time.deltaTime / m_FadeInTime;
+            Sprite.color = tempColor;
+
+            if (tempColor.a >= 1f)
+            {
+                tempColor.a = 1.0f;
+            }
+
+            yield return null; 
+        }
+
+        Sprite.color = tempColor;
+    }
+
+    IEnumerator Explosion(SpriteRenderer Sprite)
+    {
+        Color tempColor = Sprite.color;
+
+        Sprite.sprite = m_explosion; 
+
+        while (tempColor.a >= 1f)
+        {
+            Debug.Log("Boom");
+            tempColor.a = 0f;
+            Sprite.color = tempColor;
+
+            yield return null;
+        }
+
+        Sprite.color = tempColor;
     }
 }

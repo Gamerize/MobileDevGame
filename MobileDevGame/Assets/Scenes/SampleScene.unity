@@ -974,6 +974,8 @@ MonoBehaviour:
   - {fileID: 1283151545}
   m_TurnSystem: {fileID: 821852862}
   m_AudioManager: {fileID: 332794391}
+  m_FadeInTime: 1
+  m_explosion: {fileID: 21300000, guid: 5f69a372932ff3d45bc576cd1f2d59b5, type: 3}
 --- !u!4 &67074286
 Transform:
   m_ObjectHideFlags: 0
