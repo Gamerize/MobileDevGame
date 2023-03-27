@@ -31,6 +31,7 @@ public class ActionSystem : MonoBehaviour
 
     //Fade in
     public float m_FadeInTime = 1f;
+    public bool m_faded;
 
     //Explosion
     [SerializeField] private Sprite m_explosion; 
@@ -72,6 +73,7 @@ public class ActionSystem : MonoBehaviour
 
         //Set Bool
         m_HasActed = true;
+        m_faded = false;
     }
 
     public void P1BuildBarrier()
@@ -166,11 +168,15 @@ public class ActionSystem : MonoBehaviour
         if(m_P1TurretCount != 0 && m_P2TurretCount != 0 && m_HasActed == false)
         {
             m_AudioManager.playAudio("Boom");
-            m_P2Turrets[m_P2TurretCount-1].SetActive(false);
             StartCoroutine(Explosion(m_P2Turrets[m_P2TurretCount-1].GetComponent<SpriteRenderer>()));
-            m_P2TurretCount--;
-            m_TurnSystem.m_P1Text.text = "P2 Turret Destroyed!";
+            if (m_faded == true)
+            {
+                m_P2Turrets[m_P2TurretCount - 1].SetActive(false);
+                m_P2TurretCount--;
+                m_TurnSystem.m_P2Text.text = "P2 Turret Destroyed!";
+            }
             m_HasActed = true;
+            m_faded = false;
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
@@ -190,11 +196,15 @@ public class ActionSystem : MonoBehaviour
         if (m_P2TurretCount != 0 && m_P1TurretCount != 0 && m_HasActed == false)
         {
             m_AudioManager.playAudio("Boom");
-            m_P1Turrets[m_P1TurretCount-1].SetActive(false);
             StartCoroutine(Explosion(m_P1Turrets[m_P1TurretCount-1].GetComponent<SpriteRenderer>()));
-            m_P1TurretCount--;
-            m_TurnSystem.m_P2Text.text = "P1 Turret Destroyed!";
+            if (m_faded == true)
+            {
+                m_P1Turrets[m_P1TurretCount - 1].SetActive(false);
+                m_P1TurretCount--;
+                m_TurnSystem.m_P2Text.text = "P1 Turret Destroyed!";
+            }
             m_HasActed = true;
+            m_faded = false;
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
@@ -215,11 +225,15 @@ public class ActionSystem : MonoBehaviour
         if (m_P1TurretCount != 0 && m_P2BarrierCount != 0 && m_HasActed == false)
         {
             m_AudioManager.playAudio("Boom");
-            m_P2Barriers[m_P2BarrierCount-1].SetActive(false);
             StartCoroutine(Explosion(m_P2Barriers[m_P2BarrierCount-1].GetComponent<SpriteRenderer>()));
-            m_P2BarrierCount--;
-            m_TurnSystem.m_P1Text.text = "P2 Barrier Destroyed!";
+            if (m_faded == true)
+            {
+                m_P2Barriers[m_P2BarrierCount - 1].SetActive(false);
+                m_P2BarrierCount--;
+                m_TurnSystem.m_P1Text.text = "P2 Barrier Destroyed!";
+            }
             m_HasActed = true;
+            m_faded = false;
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
@@ -239,11 +253,15 @@ public class ActionSystem : MonoBehaviour
         if (m_P2TurretCount != 0 && m_P1BarrierCount != 0 && m_HasActed == false)
         {
             m_AudioManager.playAudio("Boom");
-            m_P1Barriers[m_P1BarrierCount-1].SetActive(false);
             StartCoroutine(Explosion(m_P1Barriers[m_P1BarrierCount-1].GetComponent<SpriteRenderer>()));
-            m_P1BarrierCount--;
-            m_TurnSystem.m_P2Text.text = "P1 Barrier Destroyed!";
+            if(m_faded == true)
+            {
+                m_P1Barriers[m_P1BarrierCount - 1].SetActive(false);
+                m_P1BarrierCount--;
+                m_TurnSystem.m_P2Text.text = "P1 Barrier Destroyed!";
+            }
             m_HasActed = true;
+            m_faded = false;
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
@@ -264,11 +282,15 @@ public class ActionSystem : MonoBehaviour
         if (m_P1TurretCount != 0 && m_P2FortCount != 0 && m_HasActed == false && m_P2BarrierCount == 0)
         {
             m_AudioManager.playAudio("Boom");
-            m_P2Forts[m_P2FortCount - 1].SetActive(false);
             StartCoroutine(Explosion(m_P2Forts[m_P2FortCount-1].GetComponent<SpriteRenderer>()));
-            m_P2FortCount--;
-            m_TurnSystem.m_P1Text.text = "P2 Fort Damaged!";
+            if(m_faded == true)
+            {
+                m_P2Forts[m_P2FortCount - 1].SetActive(false);
+                m_P2FortCount--;
+                m_TurnSystem.m_P1Text.text = "P2 Fort Damaged!";
+            }
             m_HasActed = true;
+            m_faded = false;
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
@@ -288,11 +310,15 @@ public class ActionSystem : MonoBehaviour
         if (m_P2TurretCount != 0 && m_P1FortCount != 0 && m_HasActed == false && m_P1BarrierCount == 0)
         {
             m_AudioManager.playAudio("Boom");
-            m_P1Forts[m_P1FortCount - 1].SetActive(false);
             StartCoroutine(Explosion(m_P1Forts[m_P1FortCount-1].GetComponent<SpriteRenderer>()));
-            m_P1FortCount--;
-            m_TurnSystem.m_P2Text.text = "P1 Fort Damaged!";
+            if(m_faded == true)
+            {
+                m_P1Forts[m_P1FortCount - 1].SetActive(false);
+                m_P1FortCount--;
+                m_TurnSystem.m_P2Text.text = "P1 Fort Damaged!";
+            }
             m_HasActed = true;
+            m_faded = false;
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
@@ -351,14 +377,21 @@ public class ActionSystem : MonoBehaviour
 
         Sprite.sprite = m_explosion; 
 
-        while (tempColor.a >= 1f)
+        while (tempColor.a > 0f)
         {
             Debug.Log("Boom");
-            tempColor.a = 0f;
+            tempColor.a -= Time.deltaTime / m_FadeInTime;
             Sprite.color = tempColor;
 
-            yield return null;
+            if (tempColor.a <= 0f)
+            {
+                tempColor.a = 0f;
+            }
+
+            yield return new WaitForSeconds(1f);
         }
+
+        m_faded = true;
 
         Sprite.color = tempColor;
     }
