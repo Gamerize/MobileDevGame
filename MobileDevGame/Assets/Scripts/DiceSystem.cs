@@ -35,7 +35,7 @@ public class DiceSystem : MonoBehaviour
 
     public void P1DiceButton()
     {
-        Debug.Log("Rolled P1");
+        Debug.Log("Rolled P1"); 
         if (m_P1CanRoll == true)
         {
             m_p1Ready = true;
