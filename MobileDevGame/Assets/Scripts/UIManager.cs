@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public void Rematch()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Gameplay");
     }
 
     public void Quit()

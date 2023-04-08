@@ -22,6 +22,7 @@ public class TurnSystem : MonoBehaviour
     //Scripts
     public DiceSystem m_DiceSystem;
     public ActionSystem m_ActionSystem;
+    public AudioManager m_AudioManager;
 
     //Text
     public TextMeshProUGUI m_P1Text;
@@ -94,6 +95,7 @@ public class TurnSystem : MonoBehaviour
         {
             if (m_DiceSystem.m_P1DiceNum > m_DiceSystem.m_P2DiceNum)
             {
+                m_AudioManager.playAudio("Turn");
                 m_P1Text.text = "P1 Turn";
                 m_P2Text.text = " ";
                 m_ActionSystem.m_HasActed = false;
@@ -101,6 +103,7 @@ public class TurnSystem : MonoBehaviour
             }
             else if (m_DiceSystem.m_P1DiceNum < m_DiceSystem.m_P2DiceNum)
             {
+                m_AudioManager.playAudio("Turn");
                 m_P1Text.text = " ";
                 m_P2Text.text = "P2 Turn";
                 m_ActionSystem.m_HasActed = false;
@@ -108,6 +111,7 @@ public class TurnSystem : MonoBehaviour
             }
             else if (m_DiceSystem.m_P1DiceNum == m_DiceSystem.m_P2DiceNum)
             {
+                m_AudioManager.playAudio("Reroll");
                 m_P1Text.text = "Reroll";
                 m_P1Text.text = "Reroll";
                 m_CurrentState = TurnState.WAIT;
@@ -133,6 +137,7 @@ public class TurnSystem : MonoBehaviour
     {
         if(m_ActionSystem.m_HasActed && m_ActionSystem.m_P2FortCount <= 0)
         {
+            m_AudioManager.playAudio("Cheer");
             m_P1Text.text = "You Win";
             m_P2Text.text = "You Lose";
             m_GameOverUI.SetActive(true);
@@ -140,6 +145,7 @@ public class TurnSystem : MonoBehaviour
         }
         else if (m_ActionSystem.m_HasActed && m_ActionSystem.m_P1FortCount <= 0)
         {
+            m_AudioManager.playAudio("Cheer");
             m_P1Text.text = "You Lose";
             m_P2Text.text = "You Win";
             m_GameOverUI.SetActive(true);

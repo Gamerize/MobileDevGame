@@ -88,10 +88,12 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P1BarrierCount >= 3 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "Can't build more Barriers";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "Not Your Turn";
         }
     }
@@ -110,10 +112,12 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P1TurretCount >= 3 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "Can't build more Turrets";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "Not Your Turn";
         }
     }
@@ -131,10 +135,12 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P2BarrierCount >= 3 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "Can't build more Barriers";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "Not Your Turn";
         }
     }
@@ -153,10 +159,12 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P2TurretCount >= 3 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "Can't build more Turrets";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "Not Your Turn";
         }
     }
@@ -173,14 +181,17 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "No Turrets on field";
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "No Turret to destroy";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "Not Your Turn";
         }
     }
@@ -196,14 +207,17 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "No Turrets on field";
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "No Turret to destroy";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "Not Your Turn";
         }
     }
@@ -220,14 +234,17 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "No Turrets on the field";
         }
         else if (m_P2BarrierCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "No Barrier to destroy";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "Not Your Turn";
         }
     }
@@ -243,14 +260,17 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "No Turrets on the field";
         }
         else if (m_P1BarrierCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "No Barrier to destroy";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "Not Your Turn";
         }
     }
@@ -267,14 +287,17 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "No Turrets on the field";
         }
         else if (m_P2BarrierCount != 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "Their Fort is Protected";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P1Text.text = "Not Your Turn";
         }
     }
@@ -290,14 +313,17 @@ public class ActionSystem : MonoBehaviour
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "No Turrets on the field";
         }
         else if (m_P1BarrierCount != 0 && m_HasActed == false)
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "Their Fort is Protected";
         }
         else
         {
+            m_AudioManager.playAudio("Error");
             m_TurnSystem.m_P2Text.text = "Not Your Turn";
         }
     }

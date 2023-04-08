@@ -1578,6 +1578,26 @@ MonoBehaviour:
     volume: 1
     loop: 0
     source: {fileID: 0}
+  - m_Name: Reroll
+    Sound: {fileID: 8300000, guid: fc7d019ad15cb1946b6a3fd96ff3749d, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - m_Name: Error
+    Sound: {fileID: 8300000, guid: beed5aaedab3c124b93f24f679fa65ad, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - m_Name: Cheer
+    Sound: {fileID: 8300000, guid: 9de7958a3e3c7b647a8144baa22dbf95, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - m_Name: Turn
+    Sound: {fileID: 8300000, guid: 9a149b95e2911744aa8798aa0efe1323, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &347231922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 990335027248309039, guid: 0afe8fcfc4ac6ce46aef76429ea6a0f0, type: 3}
@@ -3350,6 +3370,7 @@ MonoBehaviour:
   m_CurrentState: 0
   m_DiceSystem: {fileID: 1385019595}
   m_ActionSystem: {fileID: 67074285}
+  m_AudioManager: {fileID: 332794391}
   m_P1Text: {fileID: 1725321236}
   m_P2Text: {fileID: 1072524988}
   m_Time: 1
