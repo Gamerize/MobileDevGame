@@ -863,11 +863,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: 27936250-72e3-45e0-806b-e01ad40d4f7f
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: MobileDevGame
+  organizationId: nitoryu
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
