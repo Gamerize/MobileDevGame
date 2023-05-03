@@ -47,41 +47,63 @@ MonoBehaviour:
   AudioClip:
   - m_Name: Roll
     Sound: {fileID: 8300000, guid: 06d510775947a1e4ebc078e691f156b5, type: 3}
+    audioType: 1
     volume: 0.8
     loop: 0
     source: {fileID: 0}
   - m_Name: Draw
     Sound: {fileID: 8300000, guid: 0d392548d366d2747b7d6ee922091681, type: 3}
+    audioType: 1
     volume: 0.8
     loop: 0
     source: {fileID: 0}
   - m_Name: Boom
     Sound: {fileID: 8300000, guid: 2af7ac9b1027ce04e9f092d0960f2616, type: 3}
+    audioType: 1
     volume: 0.9
     loop: 0
     source: {fileID: 0}
   - m_Name: Reroll
     Sound: {fileID: 8300000, guid: fc7d019ad15cb1946b6a3fd96ff3749d, type: 3}
+    audioType: 1
     volume: 0.7
     loop: 0
     source: {fileID: 0}
   - m_Name: Error
     Sound: {fileID: 8300000, guid: beed5aaedab3c124b93f24f679fa65ad, type: 3}
+    audioType: 1
     volume: 0.7
     loop: 0
     source: {fileID: 0}
   - m_Name: Cheer
     Sound: {fileID: 8300000, guid: 9de7958a3e3c7b647a8144baa22dbf95, type: 3}
+    audioType: 1
     volume: 0.5
     loop: 0
     source: {fileID: 0}
   - m_Name: Turn
     Sound: {fileID: 8300000, guid: 9a149b95e2911744aa8798aa0efe1323, type: 3}
+    audioType: 1
     volume: 0.7
     loop: 0
     source: {fileID: 0}
   - m_Name: Main Theme
     Sound: {fileID: 8300000, guid: 2bea12064bd6d1a47a101efe842ec80e, type: 3}
-    volume: 0.5
+    audioType: 0
+    volume: 1
     loop: 1
     source: {fileID: 0}
+  - m_Name: Button
+    Sound: {fileID: 8300000, guid: 81bbc65ddf173c34389c7beb0d30920b, type: 3}
+    audioType: 1
+    volume: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - m_Name: Settings
+    Sound: {fileID: 8300000, guid: 1b58b7d06680b1c4eba49cc6aca80146, type: 3}
+    audioType: 1
+    volume: 0.8
+    loop: 0
+    source: {fileID: 0}
+  m_MusicMixerGroup: {fileID: 5240114480472342652, guid: e12ce0f240831df46a80a6afcd538ad5, type: 2}
+  m_SFXMixerGroup: {fileID: 6858885134628086916, guid: e12ce0f240831df46a80a6afcd538ad5, type: 2}

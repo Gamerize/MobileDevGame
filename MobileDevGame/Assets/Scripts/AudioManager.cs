@@ -9,6 +9,9 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    [SerializeField] AudioMixerGroup m_MusicMixerGroup;
+    [SerializeField] AudioMixerGroup m_SFXMixerGroup;
+
     private void Awake()
     {
         if(instance == null)
@@ -25,6 +28,16 @@ public class AudioManager : MonoBehaviour
             a.source.clip = a.Sound;
             a.source.volume = a.volume;
             a.source.loop = a.loop;
+
+            switch (a.audioType)
+            {
+                case Audio.AudioTypes.Music:
+                    a.source.outputAudioMixerGroup = m_MusicMixerGroup;
+                    break;
+                case Audio.AudioTypes.SFX:
+                    a.source.outputAudioMixerGroup = m_SFXMixerGroup;
+                    break;
+            }
         }
     }
 
@@ -42,6 +55,23 @@ public class AudioManager : MonoBehaviour
                 a.source.Play();
             }
         }
+    }
+
+    public void StopAudio(string name)
+    {
+        foreach (Audio a in AudioClip)
+        {
+            if (a.m_Name == name)
+            {
+                a.source.Stop();
+            }
+        }
+    }
+
+    public void UpdateMixerVolume()
+    {
+        m_MusicMixerGroup.audioMixer.SetFloat("Music Volume", Mathf.Log10(Sliders.musicVolume) * 20);
+        m_SFXMixerGroup.audioMixer.SetFloat("SFX Volume", Mathf.Log10(Sliders.SFXVolume) * 20);
     }
 }
 
