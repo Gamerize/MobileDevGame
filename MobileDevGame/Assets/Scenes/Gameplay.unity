@@ -957,53 +957,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107968510}
   m_CullTransparentMesh: 1
---- !u!1 &160254969
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 160254971}
-  - component: {fileID: 160254970}
-  m_Layer: 0
-  m_Name: Ads Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &160254970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160254969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17afa376ba60c0946a43cd6fd7e84e20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _androidGameId: 5258707
-  _iOSGameId: 
-  _testMode: 1
---- !u!4 &160254971
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160254969}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8155849, y: -0.92113674, z: -0.026329683}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &206829298
 GameObject:
   m_ObjectHideFlags: 0
@@ -7228,6 +7181,65 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 0afe8fcfc4ac6ce46aef76429ea6a0f0, type: 3}
+--- !u!1001 &6968372277901078491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.8155849
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.92113674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.026329683
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968372277774935074, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+      propertyPath: m_Name
+      value: Ads Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
 --- !u!1001 &8255024202202916357
 PrefabInstance:
   m_ObjectHideFlags: 0

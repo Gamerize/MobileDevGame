@@ -36,6 +36,16 @@ public class SaveSystem : MonoBehaviour
     {
         m_gameData.m_musicVolumeValue = Sliders.musicVolume;
         m_gameData.m_sfxVolumeValue = Sliders.SFXVolume;
+        m_gameData.m_coins = ShopSystem.Coin;
+        m_gameData.m_adTimeStamp = RewardedAdButton.PreviousTimestamp;
+        m_gameData.m_blueUnlocked = ShopSystem.BlueUnlocked;
+        m_gameData.m_greenUnlocked = ShopSystem.GreenUnlocked;
+        m_gameData.m_p1RedEquip = EquipSystem.P1RedEquiped;
+        m_gameData.m_p2RedEquip = EquipSystem.P2RedEquiped;
+        m_gameData.m_p1BlueEquip = EquipSystem.P1BlueEquiped;
+        m_gameData.m_p2BlueEquip = EquipSystem.P2BlueEquiped;
+        m_gameData.m_p1GreenEquip = EquipSystem.P1GreenEquiped;
+        m_gameData.m_p2GreenEquip = EquipSystem.P2GreenEquiped;
 
         string jsonString = JsonUtility.ToJson(m_gameData);
 
@@ -46,5 +56,15 @@ public class SaveSystem : MonoBehaviour
     {
         Sliders.musicVolume = m_gameData.m_musicVolumeValue;
         Sliders.SFXVolume = m_gameData.m_sfxVolumeValue;
+        ShopSystem.Coin = m_gameData.m_coins;
+        RewardedAdButton.PreviousTimestamp = m_gameData.m_adTimeStamp;
+        ShopSystem.BlueUnlocked = m_gameData.m_blueUnlocked;
+        ShopSystem.GreenUnlocked = m_gameData.m_greenUnlocked;
+        EquipSystem.P1RedEquiped = m_gameData.m_p1RedEquip;
+        EquipSystem.P2RedEquiped = m_gameData.m_p2RedEquip;
+        EquipSystem.P1BlueEquiped = m_gameData.m_p1BlueEquip;
+        EquipSystem.P2BlueEquiped = m_gameData.m_p2BlueEquip;
+        EquipSystem.P1GreenEquiped = m_gameData.m_p1GreenEquip;
+        EquipSystem.P2GreenEquiped = m_gameData.m_p2GreenEquip;
     }
 }

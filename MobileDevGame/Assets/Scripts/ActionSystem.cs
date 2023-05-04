@@ -182,6 +182,7 @@ public class ActionSystem : MonoBehaviour
             m_P2TurretCount--;
             m_AttackCount--;
             m_TurnSystem.m_P2Text.text = "P2 Turret Destroyed!";
+            Handheld.Vibrate();
             if (m_AttackCount == 0)
             {
                 m_HasActed = true;
@@ -212,6 +213,7 @@ public class ActionSystem : MonoBehaviour
             StartCoroutine(Explosion(m_P1Turrets[m_P1TurretCount - 1].GetComponent<SpriteRenderer>(), m_P1Turrets[m_P1TurretCount - 1]));
             m_P1TurretCount--;
             m_AttackCount--;
+            Handheld.Vibrate();
             m_TurnSystem.m_P2Text.text = "P1 Turret Destroyed!";
             if (m_AttackCount == 0)
             {
@@ -244,6 +246,7 @@ public class ActionSystem : MonoBehaviour
             StartCoroutine(Explosion(m_P2Barriers[m_P2BarrierCount - 1].GetComponent<SpriteRenderer>(), m_P2Barriers[m_P2BarrierCount - 1]));
             m_P2BarrierCount--;
             m_AttackCount--;
+            Handheld.Vibrate();
             m_TurnSystem.m_P1Text.text = "P2 Barrier Destroyed!";
             if (m_AttackCount == 0)
             {
@@ -275,6 +278,7 @@ public class ActionSystem : MonoBehaviour
             StartCoroutine(Explosion(m_P1Barriers[m_P1BarrierCount - 1].GetComponent<SpriteRenderer>(), m_P1Barriers[m_P1BarrierCount - 1]));
             m_P1BarrierCount--;
             m_AttackCount--;
+            Handheld.Vibrate();
             m_TurnSystem.m_P2Text.text = "P1 Barrier Destroyed!";
             if (m_AttackCount == 0)
             {
@@ -307,6 +311,7 @@ public class ActionSystem : MonoBehaviour
             StartCoroutine(Explosion(m_P2Forts[m_P2FortCount - 1].GetComponent<SpriteRenderer>(), m_P2Forts[m_P2FortCount - 1]));
             m_P2FortCount--;
             m_AttackCount--;
+            Handheld.Vibrate();
             m_TurnSystem.m_P1Text.text = "P2 Fort Damaged!";
             if (m_AttackCount == 0)
             {
@@ -338,6 +343,7 @@ public class ActionSystem : MonoBehaviour
             StartCoroutine(Explosion(m_P1Forts[m_P1FortCount - 1].GetComponent<SpriteRenderer>(), m_P1Forts[m_P1FortCount - 1]));
             m_P1FortCount--;
             m_AttackCount--;
+            Handheld.Vibrate();
             m_TurnSystem.m_P2Text.text = "P1 Fort Damaged!";
             if (m_AttackCount == 0)
             {

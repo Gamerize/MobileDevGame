@@ -105,5 +105,17 @@ MonoBehaviour:
     volume: 0.8
     loop: 0
     source: {fileID: 0}
+  - m_Name: Earn Coins
+    Sound: {fileID: 8300000, guid: 8faa0fffcdbab5c4caecbc8b3fe33b0e, type: 3}
+    audioType: 1
+    volume: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - m_Name: Cashier
+    Sound: {fileID: 8300000, guid: 3960c82cecdd7f543ac2d5e89383230b, type: 3}
+    audioType: 1
+    volume: 0.8
+    loop: 0
+    source: {fileID: 0}
   m_MusicMixerGroup: {fileID: 5240114480472342652, guid: e12ce0f240831df46a80a6afcd538ad5, type: 2}
   m_SFXMixerGroup: {fileID: 6858885134628086916, guid: e12ce0f240831df46a80a6afcd538ad5, type: 2}
