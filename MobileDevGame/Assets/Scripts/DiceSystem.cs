@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DiceSystem : MonoBehaviour
 {
-    //Sprite
+    [Header("Dices")]
     [SerializeField] private Sprite[] m_diceSides;
     [SerializeField] private SpriteRenderer m_p1Renderer;
     [SerializeField] private SpriteRenderer m_p2Renderer;
@@ -20,6 +21,9 @@ public class DiceSystem : MonoBehaviour
     private bool m_p1Ready;
     private bool m_p2Ready;
 
+    public Button m_p1DiceButton;
+    public Button m_p2DiceButton;
+
     //Scripts
     public TurnSystem m_TurnSystem;
     public AudioManager m_AudioManager;
@@ -31,7 +35,8 @@ public class DiceSystem : MonoBehaviour
         m_P2CanRoll = false;
         m_p1Ready = true;
         m_p2Ready = true;
-}
+        m_p1DiceButton.interactable = m_p2DiceButton.interactable = true;
+    }
 
     public void P1DiceButton()
     {
@@ -44,6 +49,7 @@ public class DiceSystem : MonoBehaviour
                 m_AudioManager.playAudio("Roll");
                 StartCoroutine("P1RollDice");
                 m_p1Ready = false;
+                m_p1DiceButton.interactable = false;
             }  
         }
     }
@@ -59,6 +65,7 @@ public class DiceSystem : MonoBehaviour
                 m_AudioManager.playAudio("Roll");
                 StartCoroutine("P2RollDice");
                 m_p2Ready = false;
+                m_p2DiceButton.interactable = false;
             }
         }
     }

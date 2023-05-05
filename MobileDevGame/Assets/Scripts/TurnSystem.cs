@@ -27,9 +27,11 @@ public class TurnSystem : MonoBehaviour
     //Text
     public TextMeshProUGUI m_P1Text;
     public TextMeshProUGUI m_P2Text;
+    public TextMeshProUGUI m_P1GameOverText;
+    public TextMeshProUGUI m_P2GameOverText;
 
     //Time
-    public float m_Time = 1f;
+    private float m_Time = 1f;
     private float m_TimeStore;
 
     //Bool
@@ -84,6 +86,7 @@ public class TurnSystem : MonoBehaviour
     {
         m_DiceSystem.m_P1CanRoll = true;
         m_DiceSystem.m_P2CanRoll = true;
+        m_DiceSystem.m_p1DiceButton.interactable = m_DiceSystem.m_p2DiceButton.interactable = true;
         m_CurrentState = TurnState.DICE;
         m_P1Text.text = "Roll the Dice";
         m_P2Text.text = "Roll the Dice";
@@ -138,16 +141,18 @@ public class TurnSystem : MonoBehaviour
         if(m_ActionSystem.m_HasActed && m_ActionSystem.m_P2FortCount <= 0)
         {
             m_AudioManager.playAudio("Cheer");
-            m_P1Text.text = "You Win";
-            m_P2Text.text = "You Lose";
+            m_P1Text.text = m_P2Text.text = " ";
+            m_P1GameOverText.text = "You Win";
+            m_P2GameOverText.text = "You Lose";
             m_GameOverUI.SetActive(true);
             m_CurrentState = TurnState.GAMEOVER;
         }
         else if (m_ActionSystem.m_HasActed && m_ActionSystem.m_P1FortCount <= 0)
         {
             m_AudioManager.playAudio("Cheer");
-            m_P1Text.text = "You Lose";
-            m_P2Text.text = "You Win";
+            m_P1Text.text = m_P2Text.text = " ";
+            m_P1GameOverText.text = "You Lose";
+            m_P2GameOverText.text = "You Win";
             m_GameOverUI.SetActive(true);
             m_CurrentState = TurnState.GAMEOVER;
         }

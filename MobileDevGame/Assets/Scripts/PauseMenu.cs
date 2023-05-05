@@ -2,37 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool m_paused = false;
-
     public GameObject m_PauseMenuUI;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if(m_paused)
-        {
-            Resume();
-        }
-        else
-        {
-            Pause();
-        }
+        m_PauseMenuUI.SetActive(false);
     }
 
-    void Resume()
+    public void Resume()
     {
         m_PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        m_paused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         m_PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        m_paused = true;
+    }
+
+    public void Return()
+    {
+        m_PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main Menu");
     }
 }

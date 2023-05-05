@@ -29,6 +29,7 @@ public class ActionSystem : MonoBehaviour
     //Scripts
     public TurnSystem m_TurnSystem;
     public AudioManager m_AudioManager;
+    public DiceSystem m_DiceSystem;
 
     //Fade in
     public float m_FadeInTime = 1f;
@@ -87,7 +88,6 @@ public class ActionSystem : MonoBehaviour
             m_P1BarrierCount++;
             m_HasActed = true;
             m_TurnSystem.m_P1Text.text = "Barrier Built";
-            Debug.Log("P1 Build barrier");
         }
         else if (m_P1BarrierCount >= 3 && m_HasActed == false)
         {
@@ -111,7 +111,6 @@ public class ActionSystem : MonoBehaviour
             m_P1TurretCount++;
             m_HasActed = true;
             m_TurnSystem.m_P1Text.text = "Turret Built";
-            Debug.Log("P1 Build Turret");
         }
         else if (m_P1TurretCount >= 3 && m_HasActed == false)
         {
@@ -134,7 +133,6 @@ public class ActionSystem : MonoBehaviour
             m_P2BarrierCount++;
             m_HasActed = true;
             m_TurnSystem.m_P2Text.text = "Barrier Built";
-            Debug.Log("P2 Build barrier");
         }
         else if (m_P2BarrierCount >= 3 && m_HasActed == false)
         {
@@ -158,7 +156,6 @@ public class ActionSystem : MonoBehaviour
             m_P2TurretCount++;
             m_HasActed = true;
             m_TurnSystem.m_P2Text.text = "Turret Built";
-            Debug.Log("P2 Build Turret");
         }
         else if (m_P2TurretCount >= 3 && m_HasActed == false)
         {
@@ -181,7 +178,7 @@ public class ActionSystem : MonoBehaviour
             StartCoroutine(Explosion(m_P2Turrets[m_P2TurretCount - 1].GetComponent<SpriteRenderer>(), m_P2Turrets[m_P2TurretCount - 1]));
             m_P2TurretCount--;
             m_AttackCount--;
-            m_TurnSystem.m_P2Text.text = "P2 Turret Destroyed!";
+            m_TurnSystem.m_P1Text.text = "P2 Turret Destroyed!";
             Handheld.Vibrate();
             if (m_AttackCount == 0)
             {
