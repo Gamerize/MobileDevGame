@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] GameObject m_mainMenu;
     [SerializeField] GameObject m_selectMenu;
     [SerializeField] GameObject m_settingsMenu;
@@ -12,7 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject m_EquipMenu;
     [SerializeField] GameObject m_ShopMenu;
 
+    [Header("System")]
     [SerializeField] AudioManager m_audioManager;
+    [SerializeField] RewardedAdButton m_rewardedAdButton;
 
     private void Start()
     {
@@ -95,8 +98,28 @@ public class UIManager : MonoBehaviour
         m_ShopMenu.SetActive(false);
     }
 
-    public void Rematch()
+    public void AIMatch()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        if(sceneName == "VS AI")
+        {
+            m_rewardedAdButton.ShowAdAfterMatch();
+        }
+        m_audioManager.playAudio("Button");
+        SceneManager.LoadScene("VS AI");
+    }
+
+    public void Multiplayer()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        if (sceneName == "Gameplay")
+        {
+            m_rewardedAdButton.ShowAdAfterMatch();
+        }
         m_audioManager.playAudio("Button");
         SceneManager.LoadScene("Gameplay");
     }

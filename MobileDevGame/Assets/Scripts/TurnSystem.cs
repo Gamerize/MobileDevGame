@@ -19,7 +19,7 @@ public class TurnSystem : MonoBehaviour
     //States
     public TurnState m_CurrentState;
 
-    //Scripts
+    [Header("Scripts")]
     public DiceSystem m_DiceSystem;
     public ActionSystem m_ActionSystem;
     public AudioManager m_AudioManager;
@@ -140,20 +140,20 @@ public class TurnSystem : MonoBehaviour
     {
         if(m_ActionSystem.m_HasActed && m_ActionSystem.m_P2FortCount <= 0)
         {
+            m_GameOverUI.SetActive(true);
             m_AudioManager.playAudio("Cheer");
             m_P1Text.text = m_P2Text.text = " ";
             m_P1GameOverText.text = "You Win";
             m_P2GameOverText.text = "You Lose";
-            m_GameOverUI.SetActive(true);
             m_CurrentState = TurnState.GAMEOVER;
         }
         else if (m_ActionSystem.m_HasActed && m_ActionSystem.m_P1FortCount <= 0)
         {
+            m_GameOverUI.SetActive(true);
             m_AudioManager.playAudio("Cheer");
             m_P1Text.text = m_P2Text.text = " ";
             m_P1GameOverText.text = "You Lose";
-            m_P2GameOverText.text = "You Win";
-            m_GameOverUI.SetActive(true);
+            m_P2GameOverText.text = "You Win";           
             m_CurrentState = TurnState.GAMEOVER;
         }
         else if (m_ActionSystem.m_HasActed)

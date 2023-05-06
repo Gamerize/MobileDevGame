@@ -783,7 +783,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 375919133}
         m_TargetAssemblyTypeName: ShopSystem, Assembly-CSharp
-        m_MethodName: BuyCosmetic
+        m_MethodName: BuyGreenCosmetic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6976,7 +6976,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 812937870}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Rematch
+        m_MethodName: Multiplayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10084,7 +10084,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 375919133}
         m_TargetAssemblyTypeName: ShopSystem, Assembly-CSharp
-        m_MethodName: BuyCosmetic
+        m_MethodName: BuyBlueCosmetic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10929,6 +10929,41 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+--- !u!1 &1976944239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6968372277774935074, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+  m_PrefabInstance: {fileID: 1936231172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1976944241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976944239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83d15b2645cab54cb688b73fcde881a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showAdButton: {fileID: 0}
+  _androidAdUnitId: Rewarded_Android
+  _iOSAdUnitId: Rewarded_iOS
+  m_gameData:
+    m_musicVolumeValue: 0
+    m_sfxVolumeValue: 0
+    m_coins: 0
+    m_adTimeStamp: 0
+    m_blueUnlocked: 0
+    m_greenUnlocked: 0
+    m_p1RedEquip: 0
+    m_p2RedEquip: 0
+    m_p1BlueEquip: 0
+    m_p2BlueEquip: 0
+    m_p1GreenEquip: 0
+    m_p2GreenEquip: 0
+  m_audioManager: {fileID: 0}
+  m_saveSystem: {fileID: 0}
 --- !u!1 &1980545725
 GameObject:
   m_ObjectHideFlags: 0
@@ -11531,7 +11566,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2045318051}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 812937870}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: AIMatch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2045318051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11998,6 +12045,10 @@ PrefabInstance:
       value: Equip System
       objectReference: {fileID: 0}
     - target: {fileID: 1033831290341969819, guid: 09576d3303837fd45b9922f2fe60f6e9, type: 3}
+      propertyPath: m_saveSystem
+      value: 
+      objectReference: {fileID: 189520535}
+    - target: {fileID: 1033831290341969819, guid: 09576d3303837fd45b9922f2fe60f6e9, type: 3}
       propertyPath: m_P1RedButton
       value: 
       objectReference: {fileID: 591464535}
@@ -12266,6 +12317,18 @@ PrefabInstance:
       propertyPath: m_BuyMessage
       value: 
       objectReference: {fileID: 1362998433}
+    - target: {fileID: 4018950146312400330, guid: c8716a5ae7700ff4b9977eb93d13437e, type: 3}
+      propertyPath: m_blueButton
+      value: 
+      objectReference: {fileID: 1783533767}
+    - target: {fileID: 4018950146312400330, guid: c8716a5ae7700ff4b9977eb93d13437e, type: 3}
+      propertyPath: m_saveSystem
+      value: 
+      objectReference: {fileID: 189520535}
+    - target: {fileID: 4018950146312400330, guid: c8716a5ae7700ff4b9977eb93d13437e, type: 3}
+      propertyPath: m_greenButton
+      value: 
+      objectReference: {fileID: 65823739}
     - target: {fileID: 4018950146312400330, guid: c8716a5ae7700ff4b9977eb93d13437e, type: 3}
       propertyPath: m_audioManager
       value: 

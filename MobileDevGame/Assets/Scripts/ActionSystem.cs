@@ -18,7 +18,6 @@ public class ActionSystem : MonoBehaviour
     public GameObject[] m_P1Turrets;
     public int m_P2TurretCount;
     public GameObject[] m_P2Turrets;
-    public int m_AttackCount;
 
     //Forts
     public int m_P1FortCount;
@@ -34,12 +33,53 @@ public class ActionSystem : MonoBehaviour
     //Fade in
     public float m_FadeInTime = 1f;
 
-    //Explosion
-    [SerializeField] private Sprite m_explosion; 
+    [Header("Sprite")]
+    [SerializeField] Sprite m_explosion;
+    [SerializeField] Sprite m_redSprite;
+    [SerializeField] Sprite m_blueSprite;
+    [SerializeField] Sprite m_greenSprite;
+
+    [Header("Sprite Renderer")]
+    [SerializeField] SpriteRenderer[] m_p1Sprites;
+    [SerializeField] SpriteRenderer[] m_p2Sprites;
 
     // Start is called before the first frame update
     void Start()
     {
+        //set sprites
+
+
+        for (int i = 0; i < m_p1Sprites.Length; i++)
+        {
+            if(EquipSystem.P1RedEquiped)
+            {
+                m_p1Sprites[i].sprite = m_redSprite;
+            }
+            if(EquipSystem.P1BlueEquiped)
+            {
+                m_p1Sprites[i].sprite = m_blueSprite;
+            }
+            if(EquipSystem.P1GreenEquiped)
+            {
+                m_p1Sprites[i].sprite = m_greenSprite;
+            }
+        }
+        for (int i = 0; i < m_p2Sprites.Length; i++)
+        {
+            if (EquipSystem.P2RedEquiped)
+            {
+                m_p2Sprites[i].sprite = m_redSprite;
+            }
+            if (EquipSystem.P2BlueEquiped)
+            {
+                m_p2Sprites[i].sprite = m_blueSprite;
+            }
+            if (EquipSystem.P2GreenEquiped)
+            {
+                m_p2Sprites[i].sprite = m_greenSprite;
+            }
+        }
+
         //Set Barriers
         m_P1BarrierCount = 0;
         for (int i = 0; i < m_P1Barriers.Length; i++)
@@ -74,8 +114,6 @@ public class ActionSystem : MonoBehaviour
 
         //Set Bool
         m_HasActed = true;
-
-        m_AttackCount = 0;
     }
 
     public void P1BuildBarrier()
@@ -173,17 +211,12 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P1TurretCount != 0 && m_P2TurretCount != 0 && m_HasActed == false && m_TurnSystem.m_CurrentState == TurnSystem.TurnState.P1ACTION)
         {
-            GetAttackCount(m_P1TurretCount);
             m_AudioManager.playAudio("Boom");
             StartCoroutine(Explosion(m_P2Turrets[m_P2TurretCount - 1].GetComponent<SpriteRenderer>(), m_P2Turrets[m_P2TurretCount - 1]));
             m_P2TurretCount--;
-            m_AttackCount--;
             m_TurnSystem.m_P1Text.text = "P2 Turret Destroyed!";
             Handheld.Vibrate();
-            if (m_AttackCount == 0)
-            {
-                m_HasActed = true;
-            }
+            m_HasActed = true;
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
@@ -205,17 +238,12 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P2TurretCount != 0 && m_P1TurretCount != 0 && m_HasActed == false && m_TurnSystem.m_CurrentState == TurnSystem.TurnState.P2ACTION)
         {
-            GetAttackCount(m_P2TurretCount);
             m_AudioManager.playAudio("Boom");
             StartCoroutine(Explosion(m_P1Turrets[m_P1TurretCount - 1].GetComponent<SpriteRenderer>(), m_P1Turrets[m_P1TurretCount - 1]));
             m_P1TurretCount--;
-            m_AttackCount--;
             Handheld.Vibrate();
             m_TurnSystem.m_P2Text.text = "P1 Turret Destroyed!";
-            if (m_AttackCount == 0)
-            {
-                m_HasActed = true;
-            }
+            m_HasActed = true;
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
@@ -238,17 +266,12 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P1TurretCount != 0 && m_P2BarrierCount != 0 && m_HasActed == false && m_TurnSystem.m_CurrentState == TurnSystem.TurnState.P1ACTION)
         {
-            GetAttackCount(m_P1TurretCount);
             m_AudioManager.playAudio("Boom");
             StartCoroutine(Explosion(m_P2Barriers[m_P2BarrierCount - 1].GetComponent<SpriteRenderer>(), m_P2Barriers[m_P2BarrierCount - 1]));
             m_P2BarrierCount--;
-            m_AttackCount--;
             Handheld.Vibrate();
             m_TurnSystem.m_P1Text.text = "P2 Barrier Destroyed!";
-            if (m_AttackCount == 0)
-            {
-                m_HasActed = true;
-            }
+            m_HasActed = true;
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
@@ -270,17 +293,12 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P2TurretCount != 0 && m_P1BarrierCount != 0 && m_HasActed == false && m_TurnSystem.m_CurrentState == TurnSystem.TurnState.P2ACTION)
         {
-            GetAttackCount(m_P2TurretCount);
             m_AudioManager.playAudio("Boom");
             StartCoroutine(Explosion(m_P1Barriers[m_P1BarrierCount - 1].GetComponent<SpriteRenderer>(), m_P1Barriers[m_P1BarrierCount - 1]));
             m_P1BarrierCount--;
-            m_AttackCount--;
             Handheld.Vibrate();
             m_TurnSystem.m_P2Text.text = "P1 Barrier Destroyed!";
-            if (m_AttackCount == 0)
-            {
-                m_HasActed = true;
-            }
+            m_HasActed = true;
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
@@ -303,17 +321,12 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P1TurretCount != 0 && m_P2FortCount != 0 && m_HasActed == false && m_P2BarrierCount == 0 && m_TurnSystem.m_CurrentState == TurnSystem.TurnState.P1ACTION)
         {
-            GetAttackCount(m_P1TurretCount);
             m_AudioManager.playAudio("Boom");
             StartCoroutine(Explosion(m_P2Forts[m_P2FortCount - 1].GetComponent<SpriteRenderer>(), m_P2Forts[m_P2FortCount - 1]));
             m_P2FortCount--;
-            m_AttackCount--;
             Handheld.Vibrate();
             m_TurnSystem.m_P1Text.text = "P2 Fort Damaged!";
-            if (m_AttackCount == 0)
-            {
-                m_HasActed = true;
-            }
+            m_HasActed = true;
         }
         else if (m_P1TurretCount == 0 && m_HasActed == false)
         {
@@ -335,17 +348,12 @@ public class ActionSystem : MonoBehaviour
     {
         if (m_P2TurretCount != 0 && m_P1FortCount != 0 && m_HasActed == false && m_P1BarrierCount == 0 && m_TurnSystem.m_CurrentState == TurnSystem.TurnState.P2ACTION)
         {
-            GetAttackCount(m_P2TurretCount);
             m_AudioManager.playAudio("Boom");
             StartCoroutine(Explosion(m_P1Forts[m_P1FortCount - 1].GetComponent<SpriteRenderer>(), m_P1Forts[m_P1FortCount - 1]));
             m_P1FortCount--;
-            m_AttackCount--;
             Handheld.Vibrate();
             m_TurnSystem.m_P2Text.text = "P1 Fort Damaged!";
-            if (m_AttackCount == 0)
-            {
-                m_HasActed = true;
-            }
+            m_HasActed = true;
         }
         else if (m_P2TurretCount == 0 && m_HasActed == false)
         {
@@ -430,8 +438,8 @@ public class ActionSystem : MonoBehaviour
         Sprite.sprite = tempSprite;
     }
 
-    void GetAttackCount(int TurretNum)
+    void ChangeSprite()
     {
-        m_AttackCount = TurretNum;
+        
     }
 }

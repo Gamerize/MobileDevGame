@@ -29,28 +29,35 @@ public class EquipSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_P1GreenButtonText;
     [SerializeField] TextMeshProUGUI m_P2GreenButtonText;
 
+    [Header("System")]
+    [SerializeField] SaveSystem m_saveSystem;
+
 
     // Update is called once per frame
     void Update()
     {
-        if (ShopSystem.BlueUnlocked && ShopSystem.GreenUnlocked)
+        if (ShopSystem.BlueUnlocked || ShopSystem.GreenUnlocked)
         {
             if (P1RedEquiped)
             {
                 m_P1RedButton.interactable = false;
+                m_P1RedButtonText.text = "P1 Equipped";
             }
             else
             {
                 m_P1RedButton.interactable = true;
+                m_P1RedButtonText.text = "P1 Equip";
             }
 
             if (P2RedEquiped)
             {
                 m_P2RedButton.interactable = false;
+                m_P2RedButtonText.text = "P2 Equipped";
             }
             else
             {
                 m_P2RedButton.interactable = true;
+                m_P2RedButtonText.text = "P2 Equip";
             }
         }
         else 
@@ -66,24 +73,29 @@ public class EquipSystem : MonoBehaviour
             if (P1BlueEquiped)
             {
                 m_P1BlueButton.interactable = false;
+                m_P1BlueButtonText.text = "P1 Equipped";
             }
             else
             {
                 m_P1BlueButton.interactable = true;
+                m_P1BlueButtonText.text = "P1 Equip";
             }
 
             if (P2BlueEquiped)
             {
                 m_P2BlueButton.interactable = false;
+                m_P2BlueButtonText.text = "P1 Equipped";
             }
             else
             {
                 m_P2BlueButton.interactable = true;
+                m_P2BlueButtonText.text = "P1 Equip";
             }
         }
         else
         {
             m_P1BlueButton.interactable = m_P2BlueButton.interactable = false;
+            m_P1BlueButtonText.text = m_P2BlueButtonText.text = "Locked";
         }
 
 
@@ -92,24 +104,29 @@ public class EquipSystem : MonoBehaviour
             if (P1GreenEquiped)
             {
                 m_P1GreenButton.interactable = false;
+                m_P1GreenButtonText.text = "P1 Equipped";
             }
             else
             {
                 m_P1GreenButton.interactable = true;
+                m_P1GreenButtonText.text = "P1 Equip";
             }
 
             if (P2GreenEquiped)
             {
                 m_P2GreenButton.interactable = false;
+                m_P2GreenButtonText.text = "P2 Equipped";
             }
             else
             {
                 m_P2GreenButton.interactable = true;
+                m_P2GreenButtonText.text = "P2 Equip";
             }
         }
         else
         {
             m_P1GreenButton.interactable = m_P2GreenButton.interactable = false;
+            m_P1GreenButtonText.text = m_P2GreenButtonText.text = "Locked";
         }
 
     }
@@ -122,9 +139,7 @@ public class EquipSystem : MonoBehaviour
             P1BlueEquiped = false;
             P1GreenEquiped = false;
 
-            m_P1RedButtonText.text = "P1 Equipped";
-            m_P1BlueButtonText.text = "P1 Equip";
-            m_P1GreenButtonText.text = "P1 Equip";
+            m_saveSystem.WriteFile();
         }
     }
     public void P2RedButton()
@@ -135,9 +150,7 @@ public class EquipSystem : MonoBehaviour
             P2BlueEquiped = false;
             P2GreenEquiped = false;
 
-            m_P2RedButtonText.text = "P2 Equipped";
-            m_P2BlueButtonText.text = "P2 Equip";
-            m_P2GreenButtonText.text = "P2 Equip";
+            m_saveSystem.WriteFile();
         }
     }
     public void P1BlueButton()
@@ -148,9 +161,7 @@ public class EquipSystem : MonoBehaviour
             P1BlueEquiped = true;
             P1GreenEquiped = false;
 
-            m_P1RedButtonText.text = "P1 Equip";
-            m_P1BlueButtonText.text = "P1 Equipped";
-            m_P1GreenButtonText.text = "P1 Equip";
+            m_saveSystem.WriteFile();
         }
     }
     public void P2BlueButton()
@@ -161,9 +172,7 @@ public class EquipSystem : MonoBehaviour
             P2BlueEquiped = true;
             P2GreenEquiped = false;
 
-            m_P2RedButtonText.text = "P2 Equip";
-            m_P2BlueButtonText.text = "P2 Equipped";
-            m_P2GreenButtonText.text = "P2 Equip";
+            m_saveSystem.WriteFile();
         }
     }
     public void P1GreenButton()
@@ -174,9 +183,7 @@ public class EquipSystem : MonoBehaviour
             P1BlueEquiped = false;
             P1GreenEquiped = true;
 
-            m_P1RedButtonText.text = "P1 Equip";
-            m_P1BlueButtonText.text = "P1 Equip";
-            m_P1GreenButtonText.text = "P1 Equipped";
+            m_saveSystem.WriteFile();
         }
     }
     public void P2GreenButton()
@@ -187,9 +194,7 @@ public class EquipSystem : MonoBehaviour
             P2BlueEquiped = false;
             P2GreenEquiped = true;
 
-            m_P2RedButtonText.text = "P2 Equip";
-            m_P2BlueButtonText.text = "P2 Equip";
-            m_P2GreenButtonText.text = "P2 Equipped";
+            m_saveSystem.WriteFile();
         }
     }
 }

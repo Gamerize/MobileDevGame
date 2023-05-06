@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using TMPro;
 
 public class RewardedAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -14,6 +15,8 @@ public class RewardedAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsS
     [SerializeField] SaveSystem m_saveSystem;
 
     public static double PreviousTimestamp = 0.00f;
+
+    [SerializeField] TextMeshProUGUI m_message;
 
     void Awake()
     {
@@ -60,11 +63,20 @@ public class RewardedAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsS
             // Then show the ad:
             Advertisement.Show(_adUnitId, this);
             PreviousTimestamp = timestamp;
+            Time.timeScale = 0f;
         }    
         else 
         {
-            m_audioManager.playAudio("Error");        
+            m_audioManager.playAudio("Error");
         }
+    }
+
+    public void ShowAdAfterMatch()
+    {
+        // Disable the button:
+        _showAdButton.interactable = false;
+        // Then show the ad:
+        Advertisement.Show(_adUnitId, this);
     }
 
     // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:
@@ -77,6 +89,7 @@ public class RewardedAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsS
             ShopSystem.Coin += 10;
             m_saveSystem.WriteFile();
             m_audioManager.playAudio("Earn Coins");
+            Time.timeScale = 1f;
 
             // Load another ad:
             Advertisement.Load(adUnitId, this);
