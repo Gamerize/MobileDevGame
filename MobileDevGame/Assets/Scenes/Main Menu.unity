@@ -2966,7 +2966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &249120110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3380,7 +3380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &324431150
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16098,7 +16098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1661071202
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21426,6 +21426,10 @@ PrefabInstance:
     - target: {fileID: 4018950146312400329, guid: c8716a5ae7700ff4b9977eb93d13437e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018950146312400330, guid: c8716a5ae7700ff4b9977eb93d13437e, type: 3}
+      propertyPath: m_timeText
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4018950146312400330, guid: c8716a5ae7700ff4b9977eb93d13437e, type: 3}
       propertyPath: m_BuyMessage
