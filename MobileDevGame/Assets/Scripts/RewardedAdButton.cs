@@ -31,6 +31,21 @@ public class RewardedAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsS
         //_showAdButton.interactable = false;
     }
 
+    private void Update()
+    {
+        var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
+        var m_timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
+        var timeElasped = m_timestamp - PreviousTimestamp;
+        if (timeElasped > 60.00f)
+        {
+            _showAdButton.interactable = true;
+        }
+        else
+        {
+            _showAdButton.interactable = false;
+        }
+    }
+
     // Call this public method when you want to get an ad ready to show.
     public void LoadAd()
     {
@@ -65,16 +80,10 @@ public class RewardedAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsS
             PreviousTimestamp = timestamp;
             Time.timeScale = 0f;
         }    
-        else 
-        {
-            m_audioManager.playAudio("Error");
-        }
     }
 
     public void ShowAdAfterMatch()
     {
-        // Disable the button:
-        _showAdButton.interactable = false;
         // Then show the ad:
         Advertisement.Show(_adUnitId, this);
     }

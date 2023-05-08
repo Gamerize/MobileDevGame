@@ -862,7 +862,7 @@ MonoBehaviour:
   m_explosion: {fileID: 21300000, guid: 5f69a372932ff3d45bc576cd1f2d59b5, type: 3}
   m_redSprite: {fileID: 21300000, guid: 27d6b50937acc2348a93a0c91ff5a3ba, type: 3}
   m_blueSprite: {fileID: 21300000, guid: 528c2cf605010e14792284bea1e6855e, type: 3}
-  m_greenSprite: {fileID: 21300000, guid: 736728c94457dfb47913f55ac871fc16, type: 3}
+  m_greenSprite: {fileID: 21300000, guid: 172d5d5b18eba224c9156149eb13ac51, type: 3}
   m_p1Sprites:
   - {fileID: 898388584}
   - {fileID: 213260948}
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rematch
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2810,6 +2810,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PauseMenuUI: {fileID: 1890232196}
+  m_audioManager: {fileID: 332794391}
+  m_rewardedAdButton: {fileID: 6968372277901078493}
+  m_turnSystem: {fileID: 821852862}
 --- !u!1 &616859629
 GameObject:
   m_ObjectHideFlags: 0
@@ -3003,7 +3006,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rematch
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4276,7 +4279,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1528935834}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Rematch
+        m_MethodName: Multiplayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6793,6 +6796,7 @@ Transform:
   - {fileID: 67074286}
   - {fileID: 1528935833}
   - {fileID: 608213826}
+  - {fileID: 6968372277901078494}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8347,9 +8351,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1528935834}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Rematch
+      - m_Target: {fileID: 608213827}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9148,7 +9152,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1528935834}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: Rematch
+        m_MethodName: Multiplayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9723,23 +9727,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 2
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1604614165}
     m_Modifications:
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8155849
+      value: -1.0127026
       objectReference: {fileID: 0}
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.92113674
+      value: -1.2567822
       objectReference: {fileID: 0}
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.026329683
+      value: 0.025994943
       objectReference: {fileID: 0}
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9747,15 +9751,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9801,6 +9805,7 @@ MonoBehaviour:
     m_sfxVolumeValue: 0
     m_coins: 0
     m_adTimeStamp: 0
+    m_firstTimestamp: 0
     m_blueUnlocked: 0
     m_greenUnlocked: 0
     m_p1RedEquip: 0
@@ -9809,8 +9814,15 @@ MonoBehaviour:
     m_p2BlueEquip: 0
     m_p1GreenEquip: 0
     m_p2GreenEquip: 0
+    m_RemovedAd: 0
   m_audioManager: {fileID: 0}
   m_saveSystem: {fileID: 0}
+  m_message: {fileID: 0}
+--- !u!4 &6968372277901078494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6968372277774935072, guid: caec02caa2c9f794fa8f3ded0517674f, type: 3}
+  m_PrefabInstance: {fileID: 6968372277901078491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8255024202202916357
 PrefabInstance:
   m_ObjectHideFlags: 0

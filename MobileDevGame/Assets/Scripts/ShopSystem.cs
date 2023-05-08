@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Purchasing;
 using static TurnSystem;
+using Unity.VisualScripting;
 
 public class ShopSystem : MonoBehaviour
 {
     public static int Coin { get; set; }
 
     [Header("Text")]
-    [SerializeField] TextMeshProUGUI m_currentCointext;
+    [SerializeField] TextMeshProUGUI m_currentCoinText1;
+    [SerializeField] TextMeshProUGUI m_currentCoinText2;
     [SerializeField] TextMeshProUGUI m_BuyMessage;
 
     public static bool BlueUnlocked;
     public static bool GreenUnlocked;
+    public static bool RemovedAds;
 
     [Header("Systems")]
     [SerializeField] AudioManager m_audioManager;
@@ -22,6 +26,7 @@ public class ShopSystem : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] Button m_blueButton;
     [SerializeField] Button m_greenButton;
+    [SerializeField] Button m_RemoveAdsButton;
 
     private float m_time = 1f;
     private float m_timeStore;
@@ -29,7 +34,7 @@ public class ShopSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_currentCointext.text = Coin.ToString();
+        m_currentCoinText1.text = m_currentCoinText2.text = Coin.ToString();
         if(BlueUnlocked)
         {
             m_blueButton.interactable = false;
@@ -37,6 +42,10 @@ public class ShopSystem : MonoBehaviour
         if(GreenUnlocked) 
         {
             m_greenButton.interactable = false;
+        }
+        if(RemovedAds) 
+        {
+            m_RemoveAdsButton.interactable = false;
         }
     }
 
@@ -67,9 +76,9 @@ public class ShopSystem : MonoBehaviour
 
     public void BuyBlueCosmetic()
     {
-        if (checkCurrency(50))
+        if (checkCurrency(100))
         {
-            Coin -= 50;
+            Coin -= 100;
             m_BuyMessage.text = "Bought Blue Crossbow";
             m_audioManager.playAudio("Cashier");
             BlueUnlocked = true;
@@ -84,9 +93,9 @@ public class ShopSystem : MonoBehaviour
 
     public void BuyGreenCosmetic()
     {
-        if (checkCurrency(50))
+        if (checkCurrency(100))
         {
-            Coin -= 50;
+            Coin -= 100;
             m_BuyMessage.text = "Bought Green Catapult";
             m_audioManager.playAudio("Cashier");
             GreenUnlocked = true;
@@ -97,5 +106,11 @@ public class ShopSystem : MonoBehaviour
             m_audioManager.playAudio("Error");
             Waiting();
         }
+    }
+
+    public void NoAds(UnityEngine.Purchasing.Product product)
+    {
+        CustomEvent.Trigger(gameObject, "No Ads", product.definition.payout.quantity);
+        RemovedAds = true;
     }
 }

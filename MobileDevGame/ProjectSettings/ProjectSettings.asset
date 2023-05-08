@@ -138,7 +138,9 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 1.0.2
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -4778206737764533472, guid: e95dea1fce000bf4cb8df0c7a0920962, type: 2}
+  - {fileID: 11400000, guid: 36222811d37662e40baa471b561b532e, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -858,6 +860,7 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     Collab: 0
+    Purchasing: 0
     Unity Ads: 1
   luminIcon:
     m_Name: 

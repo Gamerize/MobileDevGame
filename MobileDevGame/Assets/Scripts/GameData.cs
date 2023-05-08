@@ -11,6 +11,7 @@ public class GameData
     public int m_coins;
 
     public double m_adTimeStamp;
+    public double m_firstTimestamp;
 
     public bool m_blueUnlocked;
     public bool m_greenUnlocked;
@@ -21,4 +22,6 @@ public class GameData
     public bool m_p2BlueEquip;
     public bool m_p1GreenEquip;
     public bool m_p2GreenEquip;
+
+    public bool m_RemovedAd;
 }

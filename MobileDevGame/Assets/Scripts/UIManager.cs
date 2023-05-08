@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject m_CosmeticsMenu;
     [SerializeField] GameObject m_EquipMenu;
     [SerializeField] GameObject m_ShopMenu;
+    [SerializeField] GameObject m_noAdsMenu;
+    [SerializeField] GameObject m_dailyRewardMenu;
 
     [Header("System")]
     [SerializeField] AudioManager m_audioManager;
@@ -25,6 +27,8 @@ public class UIManager : MonoBehaviour
         m_CosmeticsMenu.SetActive(false);
         m_EquipMenu.SetActive(false);
         m_ShopMenu.SetActive(false);
+        m_noAdsMenu.SetActive(false);
+        m_dailyRewardMenu.SetActive(false);
     }
 
     public void OpenSettings()
@@ -98,12 +102,55 @@ public class UIManager : MonoBehaviour
         m_ShopMenu.SetActive(false);
     }
 
+    public void OpenAdsMenu()
+    {
+        m_audioManager.playAudio("Button");
+        m_settingsMenu.SetActive(false);
+        m_mainMenu.SetActive(false);
+        m_selectMenu.SetActive(false);
+        m_EquipMenu.SetActive(false);
+        m_ShopMenu.SetActive(false);
+        m_noAdsMenu.SetActive(true);
+    }
+    public void CloseAdsMenu()
+    {
+        m_audioManager.playAudio("Button");
+        m_settingsMenu.SetActive(false);
+        m_mainMenu.SetActive(true);
+        m_selectMenu.SetActive(false);
+        m_EquipMenu.SetActive(false);
+        m_ShopMenu.SetActive(false);
+        m_noAdsMenu.SetActive(false);
+    }
+
+    public void OpenRewardMenu()
+    {
+        m_audioManager.playAudio("Button");
+        m_settingsMenu.SetActive(false);
+        m_selectMenu.SetActive(false);
+        m_EquipMenu.SetActive(false);
+        m_ShopMenu.SetActive(false);
+        m_noAdsMenu.SetActive(true);
+        m_dailyRewardMenu.SetActive(true);
+    }
+    public void CloseRewardMenu()
+    {
+        m_audioManager.playAudio("Button");
+        m_settingsMenu.SetActive(false);
+        m_selectMenu.SetActive(false);
+        m_EquipMenu.SetActive(false);
+        m_ShopMenu.SetActive(false);
+        m_noAdsMenu.SetActive(false);
+        m_dailyRewardMenu.SetActive(false);
+    }
+
+
     public void AIMatch()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        if(sceneName == "VS AI")
+        if(sceneName == "VS AI" && !ShopSystem.RemovedAds)
         {
             m_rewardedAdButton.ShowAdAfterMatch();
         }
@@ -116,7 +163,7 @@ public class UIManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        if (sceneName == "Gameplay")
+        if (sceneName == "Gameplay" && !ShopSystem.RemovedAds)
         {
             m_rewardedAdButton.ShowAdAfterMatch();
         }

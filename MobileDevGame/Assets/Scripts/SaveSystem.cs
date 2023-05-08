@@ -46,6 +46,8 @@ public class SaveSystem : MonoBehaviour
         m_gameData.m_p2BlueEquip = EquipSystem.P2BlueEquiped;
         m_gameData.m_p1GreenEquip = EquipSystem.P1GreenEquiped;
         m_gameData.m_p2GreenEquip = EquipSystem.P2GreenEquiped;
+        m_gameData.m_RemovedAd = ShopSystem.RemovedAds;
+        m_gameData.m_firstTimestamp = DailyReward.FirstTimestamp;
 
         string jsonString = JsonUtility.ToJson(m_gameData);
 
@@ -66,5 +68,7 @@ public class SaveSystem : MonoBehaviour
         EquipSystem.P2BlueEquiped = m_gameData.m_p2BlueEquip;
         EquipSystem.P1GreenEquiped = m_gameData.m_p1GreenEquip;
         EquipSystem.P2GreenEquiped = m_gameData.m_p2GreenEquip;
+        ShopSystem.RemovedAds = m_gameData.m_RemovedAd;
+        DailyReward.FirstTimestamp = m_gameData.m_firstTimestamp;
     }
 }

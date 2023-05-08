@@ -2676,6 +2676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PauseMenuUI: {fileID: 1890232196}
+  m_audioManager: {fileID: 332794391}
+  m_rewardedAdButton: {fileID: 6968372277901078493}
+  m_turnSystem: {fileID: 821852862}
 --- !u!1 &616859629
 GameObject:
   m_ObjectHideFlags: 0
@@ -8775,8 +8778,10 @@ MonoBehaviour:
     m_p2BlueEquip: 0
     m_p1GreenEquip: 0
     m_p2GreenEquip: 0
+    m_RemovedAd: 0
   m_audioManager: {fileID: 332794391}
   m_saveSystem: {fileID: 1288635669}
+  m_message: {fileID: 0}
 --- !u!1001 &8255024202202916357
 PrefabInstance:
   m_ObjectHideFlags: 0
