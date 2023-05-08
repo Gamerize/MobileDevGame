@@ -21,7 +21,7 @@ public class DailyReward : MonoBehaviour
         var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
         m_timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
         var timeElasped = m_timestamp - FirstTimestamp;
-        if(timeElasped > 30) 
+        if(timeElasped > 86400) 
         {
             m_daiyRewardButton.interactable = true;
         }

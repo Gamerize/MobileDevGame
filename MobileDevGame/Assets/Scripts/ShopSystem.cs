@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Purchasing;
 using static TurnSystem;
 using Unity.VisualScripting;
+using TMPro;
 
 public class ShopSystem : MonoBehaviour
 {
@@ -27,9 +28,6 @@ public class ShopSystem : MonoBehaviour
     [SerializeField] Button m_blueButton;
     [SerializeField] Button m_greenButton;
     [SerializeField] Button m_RemoveAdsButton;
-
-    private float m_time = 1f;
-    private float m_timeStore;
 
     // Update is called once per frame
     void Update()
@@ -61,19 +59,6 @@ public class ShopSystem : MonoBehaviour
         }
     }
 
-    void Waiting()
-    {
-        if (m_time > 0)
-        {
-            m_time -= Time.deltaTime;
-        }
-        else
-        {
-            m_BuyMessage.text = " ";
-            m_time = m_timeStore;
-        }
-    }
-
     public void BuyBlueCosmetic()
     {
         if (checkCurrency(100))
@@ -87,7 +72,6 @@ public class ShopSystem : MonoBehaviour
         {
             m_BuyMessage.text = "Not Enough Coins";
             m_audioManager.playAudio("Error");
-            Waiting();
         }
     }
 
@@ -104,7 +88,6 @@ public class ShopSystem : MonoBehaviour
         {
             m_BuyMessage.text = "Not Enough Coins";
             m_audioManager.playAudio("Error");
-            Waiting();
         }
     }
 

@@ -14,6 +14,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject m_ShopMenu;
     [SerializeField] GameObject m_noAdsMenu;
     [SerializeField] GameObject m_dailyRewardMenu;
+    [SerializeField] GameObject m_intructionsMenu;
+    [SerializeField] GameObject m_FacebookMenu;
+
+    [Header("Instruction Pages")]
+    [SerializeField] GameObject m_Page1;
+    [SerializeField] GameObject m_Page2;
+    [SerializeField] GameObject m_Page3;
+    [SerializeField] GameObject m_Page4;
+    [SerializeField] GameObject m_Page5;
 
     [Header("System")]
     [SerializeField] AudioManager m_audioManager;
@@ -29,6 +38,8 @@ public class UIManager : MonoBehaviour
         m_ShopMenu.SetActive(false);
         m_noAdsMenu.SetActive(false);
         m_dailyRewardMenu.SetActive(false);
+        m_intructionsMenu.SetActive(false);
+        m_FacebookMenu.SetActive(false);
     }
 
     public void OpenSettings()
@@ -43,9 +54,70 @@ public class UIManager : MonoBehaviour
         m_settingsMenu.SetActive(false);
     }
 
-    public void OpenCosmetics()
+    public void OpenInstructions()
     {
         m_audioManager.playAudio("Button");
+        m_intructionsMenu.SetActive(true);
+        m_Page1.SetActive(true);
+        m_Page2.SetActive(false);
+        m_Page3.SetActive(false);
+        m_Page4.SetActive(false);
+        m_Page5.SetActive(false);
+    }
+    public void CloseInstructions()
+    {
+        m_audioManager.playAudio("Button");
+        m_intructionsMenu.SetActive(false);
+        m_Page1.SetActive(false);
+        m_Page2.SetActive(false);
+        m_Page3.SetActive(false);
+        m_Page4.SetActive(false);
+        m_Page5.SetActive(false);
+    }
+    public void ToPage2()
+    {
+        m_audioManager.playAudio("Button");
+        m_intructionsMenu.SetActive(true);
+        m_Page1.SetActive(false);
+        m_Page2.SetActive(true);
+        m_Page3.SetActive(false);
+        m_Page4.SetActive(false);
+        m_Page5.SetActive(false);
+    }
+    public void ToPage3()
+    {
+        m_audioManager.playAudio("Button");
+        m_intructionsMenu.SetActive(true);
+        m_Page1.SetActive(false);
+        m_Page2.SetActive(false);
+        m_Page3.SetActive(true);
+        m_Page4.SetActive(false);
+        m_Page5.SetActive(false);
+    }
+    public void ToPage4()
+    {
+        m_audioManager.playAudio("Button");
+        m_intructionsMenu.SetActive(true);
+        m_Page1.SetActive(false);
+        m_Page2.SetActive(false);
+        m_Page3.SetActive(false);
+        m_Page4.SetActive(true);
+        m_Page5.SetActive(false);
+    }
+    public void ToPage5()
+    {
+        m_audioManager.playAudio("Button");
+        m_intructionsMenu.SetActive(true);
+        m_Page1.SetActive(false);
+        m_Page2.SetActive(false);
+        m_Page3.SetActive(false);
+        m_Page4.SetActive(false);
+        m_Page5.SetActive(true);
+    }
+
+    public void OpenCosmetics()
+    {
+        m_audioManager.playAudio("Button"); 
         m_settingsMenu.SetActive(false);
         m_mainMenu.SetActive(false);
         m_selectMenu.SetActive(false);
@@ -130,7 +202,7 @@ public class UIManager : MonoBehaviour
         m_selectMenu.SetActive(false);
         m_EquipMenu.SetActive(false);
         m_ShopMenu.SetActive(false);
-        m_noAdsMenu.SetActive(true);
+        m_noAdsMenu.SetActive(false);
         m_dailyRewardMenu.SetActive(true);
     }
     public void CloseRewardMenu()
@@ -142,6 +214,28 @@ public class UIManager : MonoBehaviour
         m_ShopMenu.SetActive(false);
         m_noAdsMenu.SetActive(false);
         m_dailyRewardMenu.SetActive(false);
+    }
+    public void OpenFacebookMenu()
+    {
+        m_audioManager.playAudio("Button");
+        m_settingsMenu.SetActive(false);
+        m_selectMenu.SetActive(false);
+        m_EquipMenu.SetActive(false);
+        m_ShopMenu.SetActive(false);
+        m_noAdsMenu.SetActive(false);
+        m_dailyRewardMenu.SetActive(false);
+        m_FacebookMenu.SetActive(true);
+    }
+    public void CloseFacebookMenu()
+    {
+        m_audioManager.playAudio("Button");
+        m_settingsMenu.SetActive(false);
+        m_selectMenu.SetActive(false);
+        m_EquipMenu.SetActive(false);
+        m_ShopMenu.SetActive(false);
+        m_noAdsMenu.SetActive(false);
+        m_dailyRewardMenu.SetActive(false);
+        m_FacebookMenu.SetActive(false);
     }
 
 

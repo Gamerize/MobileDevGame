@@ -1,80 +1,50 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Facebook.Unity;
-using TMPro;
 
 public class FacebookController : MonoBehaviour
 {
-    public GameObject m_usernameField;
-
     private void Awake()
     {
-        FB.Init(SetInit,OnHideUnity);
-    }
-
-    void SetInit()
-    {
-        if(FB.IsLoggedIn)
+        if(!FB.IsInitialized)
         {
-            Debug.Log("logged in sucessfully");
+            FB.Init(() =>
+            {
+                if (FB.IsInitialized)
+                {
+                    FB.ActivateApp();
+                }
+                else
+                    Debug.LogError("Couldn't initialize");
+            },
+            isGameShown =>
+            {
+                if (!isGameShown)
+                    Time.timeScale = 0f;
+                else
+                    Time.timeScale = 1f;
+            });
         }
         else
-        {
-            Debug.Log("Is not logged in");
-        }
-    } 
-
-    void OnHideUnity(bool isGameShow)
-    {
-        if (isGameShow)
-        {
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            Time.timeScale = 0f;
-        }
+            FB.ActivateApp();
     }
 
+    #region Login / Logout
     public void FBLogin()
     {
-        List<string> permissions = new List<string>();
-        permissions.Add("Public_Profile");
-        Debug.Log(permissions);
-        FB.LogInWithReadPermissions(permissions, AuthCallResult);
+        var permissions = new List<string>() { "public_profile", "email", "user_friends" };
+        FB.LogInWithReadPermissions(permissions);
     }
 
-    void AuthCallResult(ILoginResult result)
+    public void FBLogout()
     {
-        if(result.Error != null)
-        {
-            Debug.Log(result.Error);
-        }
-        else
-        {
-            if(FB.IsLoggedIn)
-            {
-                Debug.Log("Is logged in");
-                FB.API("/m?fields=first_name",HttpMethod.GET,CallbackData);
-            }
-            else
-            {
-                Debug.Log("Login failed");
-            }
-        }
+        FB.LogOut();
     }
+    #endregion
 
-    void CallbackData(IResult res)
+    public void FBShare()
     {
-        TextMeshProUGUI username = m_usernameField.GetComponent<TextMeshProUGUI>();
-        if(res.Error != null)
-        {
-            Debug.Log("Error geeting data");
-        }
-        else
-        {
-            username.text = "Welcome Back! " + res.ResultDictionary["first_name"];
-        }
+        FB.ShareLink(new System.Uri("https://github.com/Gamerize/MobileDevGame"),"Check it out", "Casual Multiplayer Game", new System.Uri("https://gamerize.github.io/issacwai.github.io/images/pic11.png"));
     }
 }

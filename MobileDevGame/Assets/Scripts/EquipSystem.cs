@@ -84,12 +84,12 @@ public class EquipSystem : MonoBehaviour
             if (P2BlueEquiped)
             {
                 m_P2BlueButton.interactable = false;
-                m_P2BlueButtonText.text = "P1 Equipped";
+                m_P2BlueButtonText.text = "P2 Equipped";
             }
             else
             {
                 m_P2BlueButton.interactable = true;
-                m_P2BlueButtonText.text = "P1 Equip";
+                m_P2BlueButtonText.text = "P2 Equip";
             }
         }
         else
