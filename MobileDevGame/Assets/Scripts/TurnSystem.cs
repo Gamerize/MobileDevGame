@@ -57,27 +57,20 @@ public class TurnSystem : MonoBehaviour
         switch (m_CurrentState)
         {
             case TurnState.START:
-                Debug.Log("Start phase");
                 RoundStart();
                 break;
             case TurnState.DICE:
-                Debug.Log("Dice phase");
                 CompareNum();
                 break;
             case TurnState.P1ACTION:
-                Debug.Log("P1 Action phase");
                 CheckWin();
                 break;
             case TurnState.P2ACTION:
-                Debug.Log("P2 Action phase");
                 CheckWin();
                 break;
             case TurnState.GAMEOVER:
-                Debug.Log("Game Over");
                 break;
             case TurnState.WAIT:
-                Debug.Log("Wait");
-                Waiting(TurnState.START);
                 break;
         }
     }

@@ -378,7 +378,6 @@ public class ActionSystem : MonoBehaviour
 
         while (tempColor.a >= 1f)
         {
-            Debug.Log("Invisible");
             tempColor.a = 0f;
             Sprite.color = tempColor;
 
@@ -394,7 +393,6 @@ public class ActionSystem : MonoBehaviour
 
         while (tempColor.a < 1f)
         {
-            Debug.Log("Fading In");
             tempColor.a += Time.deltaTime / m_FadeInTime;
             Sprite.color = tempColor;
 
@@ -419,7 +417,6 @@ public class ActionSystem : MonoBehaviour
 
         while (tempColor.a > 0f)
         {
-            Debug.Log("Boom");
             tempColor.a -= Time.deltaTime / m_FadeInTime;
             Sprite.color = tempColor;
 
@@ -436,10 +433,5 @@ public class ActionSystem : MonoBehaviour
         Sprite.color = tempColor;
 
         Sprite.sprite = tempSprite;
-    }
-
-    void ChangeSprite()
-    {
-        
     }
 }
