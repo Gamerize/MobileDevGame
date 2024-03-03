@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.Purchasing;
 using static TurnSystem;
 using Unity.VisualScripting;
-using TMPro;
 
 public class ShopSystem : MonoBehaviour
 {
